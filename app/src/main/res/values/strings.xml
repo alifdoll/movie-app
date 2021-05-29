@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Apps</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="movie">Movie</string>
+    <string name="show">Tv Show</string>
+    <string name="movie_sample_name">Title</string>
+    <string name="movie_content_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis condimentum fermentum blandit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer sit amet fermentum dolor, sed semper lectus. Ut rutrum vitae lectus at finibus. Maecenas sed sem ut libero lacinia convallis at tincidunt ex. Cras id scelerisque odio. Duis ac feugiat neque. Cras tristique condimentum ante vel posuere. Quisque id volutpat quam.</string>
+    <string name="overview">Overview</string>
+    <string name="movie_poster_for_background_desc">Poster untuk background detail</string>
+    <string name="movie_poster_desc">"Poster detail "</string>
+
+
+</resources>
