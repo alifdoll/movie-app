@@ -41,7 +41,6 @@ class DetailViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailViewModel(dataRepository)
-        viewModel.setSelectedId(movieId)
     }
 
 
@@ -51,7 +50,7 @@ class DetailViewModelTest {
         movie.value = dummyMovie
 
         `when`(dataRepository.getMovieDetail(movieId)).thenReturn(movie)
-        val movieEntity = viewModel.getMovieDetail(movieId).value as DataEntity
+        val movieEntity = viewModel.getMovieDetail(movieId).value!!
         assertEquals("Movie", movieEntity.type)
 
         assertNotNull(movieEntity)
@@ -84,7 +83,7 @@ class DetailViewModelTest {
         show.value = dummyShow
 
         `when`(dataRepository.getShowDetail(showId)).thenReturn(show)
-        val showEntity = viewModel.getShowDetail(showId).value as DataEntity
+        val showEntity = viewModel.getShowDetail(showId).value!!
         assertEquals("Show", showEntity.type)
 
         assertNotNull(showEntity)

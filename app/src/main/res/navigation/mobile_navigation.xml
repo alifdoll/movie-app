@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_movie">
+
+    <fragment
+        android:id="@+id/nav_movie"
+        android:name="com.alif.movieapps.ui.movie.MovieFragment"
+        android:label="@string/movie"
+        tools:layout="@layout/fragment_movie" />
+
+    <fragment
+        android:id="@+id/nav_show"
+        android:name="com.alif.movieapps.ui.show.ShowFragment"
+        android:label="@string/show"
+        tools:layout="@layout/fragment_show" />
+
+    <fragment
+        android:id="@+id/nav_favorite"
+        android:name="com.alif.movieapps.ui.favorite.fragment.FavoriteFragment"
+        android:label="@string/favorite"
+        tools:layout="@layout/fragment_favorite"/>
+</navigation>

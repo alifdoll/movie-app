@@ -7,17 +7,17 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class EntityItems(
 
-        @field:SerializedName("overview")
-        val overview: String,
+        @field:SerializedName("id")
+        val id: Int,
 
         @field:SerializedName(value = "title", alternate = ["name"])
         val title: String,
 
+        @field:SerializedName("overview")
+        val overview: String,
+
         @field:SerializedName("poster_path")
         val posterPath: String,
-
-        @field:SerializedName("id")
-        val id: Int,
 
         val favorite: Boolean = false
 ): Parcelable

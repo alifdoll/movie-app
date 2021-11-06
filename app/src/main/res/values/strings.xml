@@ -10,6 +10,8 @@
     <string name="overview">Overview</string>
     <string name="movie_poster_for_background_desc">Poster untuk background detail</string>
     <string name="movie_poster_desc">"Poster detail "</string>
-
-
+    <string name="btn_add_fav">Add To Favorite</string>
+    <string name="btn_remove_fav">Remove From Favorite</string>
+    <string name="no_data">No Favorites</string>
+    <string name="favorite">Favorite</string>
 </resources>

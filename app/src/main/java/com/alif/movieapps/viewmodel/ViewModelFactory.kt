@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.alif.movieapps.data.source.DataRepository
 import com.alif.movieapps.di.Injection
 import com.alif.movieapps.ui.detail.DetailViewModel
-import com.alif.movieapps.ui.movie.MovieViewModel
-import com.alif.movieapps.ui.show.ShowViewModel
+import com.alif.movieapps.ui.entity.viewmodel.EntityViewModel
 
 class ViewModelFactory private constructor(private val dataRepository: DataRepository) : ViewModelProvider.NewInstanceFactory() {
     companion object {
@@ -23,12 +22,8 @@ class ViewModelFactory private constructor(private val dataRepository: DataRepos
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(MovieViewModel::class.java) -> {
-                MovieViewModel(dataRepository) as T
-            }
-
-            modelClass.isAssignableFrom(ShowViewModel::class.java) -> {
-                ShowViewModel(dataRepository) as T
+            modelClass.isAssignableFrom(EntityViewModel::class.java) -> {
+                EntityViewModel(dataRepository) as T
             }
 
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {

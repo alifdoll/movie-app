@@ -1,9 +1,15 @@
 package com.alif.movieapps.data.source.remote
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.alif.movieapps.BuildConfig
 import com.alif.movieapps.data.source.remote.api.ApiConfig
 import com.alif.movieapps.data.source.remote.response.EntityItems
+import com.alif.movieapps.data.source.remote.vo.ApiResponse
 import com.alif.movieapps.utils.EspressoIdlingResource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import retrofit2.await
 
 class RemoteDataSource {
@@ -22,49 +28,35 @@ class RemoteDataSource {
                 }
     }
 
-    suspend fun getAllMovies(callBack: LoadMovieCallback) {
+    fun getAllMovies(): LiveData<ApiResponse<List<EntityItems>>> {
         EspressoIdlingResource.increment()
-        ApiConfig.getApiServiceMovie().getMovie(API_KEY).await().results.let { listMovie ->
-            callBack.movieReceived(listMovie)
-            EspressoIdlingResource.decrement()
+        val resultMovie = MutableLiveData<ApiResponse<List<EntityItems>>>()
+        CoroutineScope(IO).launch {
+            try {
+                val response = ApiConfig.getApiServiceMovie().getMovie(API_KEY).await()
+                resultMovie.postValue(ApiResponse.success(response.results))
+            } catch (error: Exception) {
+                error.printStackTrace()
+                resultMovie.postValue(ApiResponse.error(error.message.toString(), mutableListOf()))
+            }
         }
+        EspressoIdlingResource.decrement()
+        return resultMovie
     }
 
-    suspend fun getAllShows(callBack: LoadShowCallback) {
+    fun getAllShows(): LiveData<ApiResponse<List<EntityItems>>> {
         EspressoIdlingResource.increment()
-        ApiConfig.getApiServiceShow().getShow(API_KEY).await().results.let { listShow ->
-            callBack.showReceived(listShow)
-            EspressoIdlingResource.decrement()
+        val resultShow = MutableLiveData<ApiResponse<List<EntityItems>>>()
+        CoroutineScope(IO).launch {
+            try {
+                val response = ApiConfig.getApiServiceShow().getShow(API_KEY).await()
+                resultShow.postValue(ApiResponse.success(response.results))
+            } catch (error: Exception) {
+                error.printStackTrace()
+                resultShow.postValue(ApiResponse.error(error.message.toString(), mutableListOf()))
+            }
         }
+        EspressoIdlingResource.decrement()
+        return resultShow
     }
-
-    suspend fun getMovieDetail(id: String, callback: LoadDetail) {
-        EspressoIdlingResource.increment()
-        ApiConfig.getApiServiceMovie().getMovieDetail(id,API_KEY).await().let { movie ->
-            callback.detailReceived(movie)
-            EspressoIdlingResource.decrement()
-        }
-    }
-
-    suspend fun getShowDetail(id: String, callback: LoadDetail) {
-        EspressoIdlingResource.increment()
-        ApiConfig.getApiServiceShow().getShowDetail(id, API_KEY).await().let { show ->
-            callback.detailReceived(show)
-            EspressoIdlingResource.decrement()
-        }
-    }
-
-    interface LoadShowCallback {
-        fun showReceived(showResponse: List<EntityItems>)
-    }
-
-    interface LoadMovieCallback {
-        fun movieReceived(movieResponse: List<EntityItems>)
-    }
-
-    interface LoadDetail {
-        fun detailReceived(detailResponse: EntityItems)
-    }
-
-
 }

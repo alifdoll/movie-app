@@ -31,7 +31,7 @@
         android:id="@+id/item_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
@@ -49,13 +49,34 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:maxLines="5"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toEndOf="@+id/item_poster"
         app:layout_constraintTop_toBottomOf="@+id/item_title"
         tools:text="@tools:sample/lorem[16]" />
+
+    <Button
+        android:id="@+id/item_button_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="#FAFAFA"
+
+        app:layout_constraintTop_toBottomOf="@+id/item_overview"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintStart_toEndOf="@+id/item_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        tools:text="ADD TO FAVORITE"
+        android:text="@string/btn_add_fav"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

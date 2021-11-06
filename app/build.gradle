@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -42,28 +43,19 @@ android {
 }
 
 dependencies {
-
-    implementation 'com.google.android.material:material:1.3.0'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-
+    
+    
+    //main
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation "androidx.activity:activity-ktx:1.1.0"
+
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$coreVersion"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //ui
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
@@ -71,6 +63,11 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     //testing
     testImplementation "junit:junit:$junitVersion"
@@ -85,10 +82,25 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
     testImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    
+	
+    //db
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    implementation "androidx.room:room-runtime:$roomRuntimeVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
-
-    implementation "androidx.activity:activity-ktx:1.1.0"
+    //api-request
+    implementation 'com.loopj.android:android-async-http:1.4.9'	
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    
+    
+
+    //paging
+    implementation 'androidx.paging:paging-runtime:2.1.2'
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+
 }
